@@ -1,0 +1,31 @@
+//- .row
+//-   .column(style='background-color:black;')
+//-     h2 Category
+//-     .vertical-menu
+//-       a.active(href='#') Men
+//-       a(href='#') Women
+//-       a(href='#') Kid
+//-       a(href='#') Shoes
+//-       a(href='#') Watch
+//-   .columna(style='background-color:black;')
+//-     h2 website content
+//-     p
+//-       | Clothing (also known as clothes, apparel, and attire) are items worn on the body. Typically, clothing is made of fabrics or textiles, but over time it has included garments made from animal skin and other thin sheets of materials and natural products found in the environment, put together. The wearing of clothing is mostly restricted to human beings and is a feature of all human societies. The amount and type of clothing worn depends on gender, body type, social factors, and geographic considerations. Garments cover the body, footwear covers the feet, gloves cover the hands, while hats and headgear cover the head. Eyewear and jewelry are not generally considered items of clothing, but play an important role in fashion and clothing as costume.
+//-     p
+//-       | Clothing serves many purposes: it can serve as protection from the elements, rough surfaces, sharp stones, rash-causing plants, insect bites, by providing a barrier between the skin and the environment. Clothing can insulate against cold or hot conditions, and it can provide a hygienic barrier, keeping infectious and toxic materials away from the body. It can protect feet from injury and discomfort or facilitate navigation in varied environments. Clothing also provides protection from ultraviolet radiation. It may be used to prevent glare or increase visual acuity in harsh environments, such as brimmed hats. Clothing is used for protection against injury in specific tasks and occupations, sports, and warfare. Fashioned with pockets, belts, or loops, clothing may provide a means to carry things while freeing the hands.
+//-     p
+//-       | Clothing has significant social factors as well. Wearing clothes is a variable social norm. It may connote modesty. Being deprived of clothing in front of others may be embarrassing. In many parts of the world, not wearing clothes in public so that genitals, breasts, or buttocks are visible could be considered indecent exposure. Pubic area or genital coverage is the most frequently encountered minimum found cross-culturally and regardless of climate, implying social convention as the basis of customs. Clothing also may be used to communicate social status, wealth, group identity, and individualism.
+#carouselExampleControls.carousel.slide(data-bs-ride='carousel')
+  .carousel-inner
+    .carousel-item.active
+      img.d-block.w-100(src='/static/background.jpg' alt='background')
+    .carousel-item
+      img.d-block.w-100(src='/static/fitness1.jpg' alt='fitness')
+    .carousel-item
+      img.d-block.w-100(src='/static/fitness1.jpg' alt='fitness')
+  button.carousel-control-prev(type='button' data-bs-target='#carouselExampleControls' data-bs-slide='prev')
+    span.carousel-control-prev-icon(aria-hidden='true')
+    span.visually-hidden Previous
+  button.carousel-control-next(type='button' data-bs-target='#carouselExampleControls' data-bs-slide='next')
+    span.carousel-control-next-icon(aria-hidden='true')
+    span.visually-hidden Next

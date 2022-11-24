@@ -1,0 +1,31 @@
+//- header(style='text-align:center')
+//-   p1(style='color:white ;') NeoSOFT
+//-   p1(style='color:red ;')  TECHNOLOGIES
+//- ul
+//-   li
+//-     a(href='#') Home
+//-   li
+//-     a(href='#') News
+//-   li
+//-     a(href='#') Contact
+//-   li
+//-     a(href='#') About
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container-fluid
+    a.navbar-brand(href='/') NeoSOFT TECHNOLOGY
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/') Home
+        li.nav-item
+          a.nav-link(href='/about') About
+        li.nav-item
+          a.nav-link(href='/gallery') Gallery
+        li.nav-item
+          a.nav-link(href='/services') Services
+        li.nav-item
+          a.nav-link(href='/contact') Contact
+        li.nav-item
+          a.nav-link(href='/contactfile') Contact detail
