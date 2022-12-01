@@ -5,6 +5,8 @@ app.set('view engine','pug');
 app.set('views','./view');
 const path = require('path')
 const fs=require('fs');
+const zip = require('express-zip');
+const folderPath = __dirname+'/user';
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
@@ -30,34 +32,47 @@ app.get("/about",(req,res)=>{
     var email=req.body.email;
     let age=req.body.age;
     let city=req.body.city;
-    let data=(`<tr>
-    <td>${name}</td>
-    <td>${phone}</td>
-    <td>${email}</td>
-    <td>${age}</td>
-    <td>${city}</td></tr>
-    `);
-    var wq=data.toString();
+    let data=name+","+phone+","+email+","+age+","+city+"\n";
     if(fs.existsSync(`./user`)){
-        fs.appendFileSync(`./user/detail.pug`,`${wq}`)
+        fs.appendFileSync(`./user/detail.txt`,data)//donot take data in string and $ string because JSON.parse throw error when read the file(error-Unexpected token A in JSON at position 8) 
     }
     else{
         fs.mkdirSync(`./user`);
-        fs.writeFileSync(`./user/detail.pug`,`${wq}`);
-        
+        fs.writeFileSync(`./user/detail.txt`,data);//donot take data in string and $ string because JSON.parse throw error when read the file(error-Unexpected token A in JSON at position 8) 
     }
-    res.redirect(`/contactfile/`)
+    res.redirect(`/contactfile/`)// it is used for redirect to page 
  })
  app.get(`/contactfile`,(req,res)=>{
- 
-    if(fs.existsSync(`./user/detail.pug`)){
-    //let data=fs.readFileSync(`./user/detail.pug`)
-    res.render('contactdetails')
-}
-else{
-    res.render("404");
-}
+try {
+    // read contents of the file
+    const data = fs.readFileSync('./user/detail.txt', 'UTF-8')
+  
+    // split the contents by new line
+    const lines = data.split(/\r?\n/)
+  var arr=[]
+    // print all lines
+    
+    lines.forEach(line => {
+        const li=line.split(/,/)// it is split the 
+        arr.push(`{"name":"${li[0]}","phone":"${li[1]}","email":"${li[2]}","age":"${li[3]}","city":"${li[4]}"}`);
+    })  
+   const result = arr.map(info => JSON.parse(info));
+   console.log(arr);
+    res.render("contactdetails",{result:result})
+  } catch (err) {
+    console.error(err)
+  }
  })
+app.get(`/single`,(req,res)=>{
+    res.download(folderPath+'/detail.txt', function(err) {
+        if(err) {
+            res.send("Error");
+        }
+        else{
+            res.send("Downloaded")
+        }
+    })
+})
 app.listen(PORT,(err)=>{
     if(err) throw err;
     else console.log(`Server work on ${PORT}`)
