@@ -4,7 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+     <link rel="stylesheet" href="/static/style.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -12,31 +14,36 @@
   </head>
   <body>
     {{> nav}}
-    <h1 align="center">Product Detials</h1>
-    <div align="center">
+   <section class="dark">
+	<div class="container py-4">
+		<h1 class="h1 text-center" id="pageHeaderTitle"style="color:white;">Product Details</h1>
      {{# each contents }}
-  <div class="card" style="width: 30%;">
-  <img src="/static/{{this.image}}" class="card-img-top" alt="{{this._id}}"  width="100px" height="100px">
-  <div class="card-body">
-    <h5 class="card-title">Name Product-{{this.pname}}</h5>
-    <p class="card-text">Description-{{this.description}}</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Price-{{this.price}}</li>
-    <li class="list-group-item">Quantity-{{this.quantity}}</li>
-    <form action="/update/{{this._id}}?con=contents" method="put">
- <li class="list-group-item"><input type="submit" class="btn btn-success" value="Edit"/></li>
-    </form>
-    <form action="deleteproduct/{{this._id}}" method="DELETE">
-<li class="list-group-item"><input type="submit" class="btn btn-success" value="Delete"/></li>
-    </form>
-  </ul>
-  <div class="card-body">
-   <button class="btn btn-success">Buy Now</button>
-  </div>
-  </div>
+<article class="postcard dark blue">
+			<a class="postcard__img_link" href="#">
+				<img class="postcard__img" src="/static/{{this.image}}" alt="{{this._id}}"/>
+			</a>
+			<div class="postcard__text">
+				<h1 class="postcard__title blue">PN-{{this.pname}}</h1>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt">{{this.description}}</div>
+				<ul class="postcard__tagbox">
+					<li class="tag__item">PRICE-{{this.price}}</li>
+					<li class="tag__item">Quantity-{{this.quantity}}</li>
+				<form action="/update/{{this._id}}?con=contents" method="put">
+                        <li class="list-group-item" style="background-color:rgb(23, 26, 39);"><input type="submit" class="btn btn-success" value="Edit"/></li>
+         </form>
+         <form action="deleteproduct/{{this._id}}" method="DELETE">
+         <li class="list-group-item"  style="background-color:rgb(23, 24, 36);"><input type="submit" class="btn btn-success" value="Delete"/></li>
+                            </form>
+				</ul>
+                <div class="card-body">
+                    <button class="btn btn-success">Buy Now</button>
+                   </div>
+			</div>
+		</article>
      {{/each}}
      </div>
+   </section>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
