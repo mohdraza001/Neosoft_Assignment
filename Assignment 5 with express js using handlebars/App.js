@@ -46,7 +46,7 @@ let transporter=nodemailer.createTransport({
     secure:false,
     auth:{
         user:"razamohd371@gmail.com",
-        pass:"ywtlwuqpfkoidipp"
+        pass:"---------------"
     }
 });
 transporter.use('compile',hbs(
